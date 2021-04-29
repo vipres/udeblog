@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseUserTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateCourseUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_user', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
+            $table->string('title')->nullable();
+            $table->text('biography')->nullable();
+            $table->string('website')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('youtube')->nullable();
+
             $table->unsignedBigInteger('user_id');
-
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            //Si un curso se elimina el registro de esta tabla tambien
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            //Si un usuario se elimina el registro de esta tabla tambien
-
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateCourseUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_user');
+        Schema::dropIfExists('profiles');
     }
 }
