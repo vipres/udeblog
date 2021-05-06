@@ -5,21 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Reaction extends Model
 {
     protected $guarded = ['id'];
     
     use HasFactory;
 
+    const LIKE = 1;
+    const DISLIKE = 2;
 
-    //Relación uno a muchos inversa
+    //Relacion uno a muchos inversa
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    public function course()
+    //Modelo polimorfico
+    public function reactionable()
     {
-        return $this->belongsTo(Course::class);
+        return $this->morphTo();
     }
 }

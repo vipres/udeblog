@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    protected $guarded = ['id', 'status'];
+    
     use HasFactory;
 
     const BORRADOR = 1;
@@ -67,5 +69,18 @@ class Course extends Model
     public function students()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    //Relacion uno a uno polimorfica
+    //Un curso solo puede tener una imagen
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough(Lesson::class, Section::class);
     }
 }

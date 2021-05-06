@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
+    protected $guarded = ['id'];
+    
     use HasFactory;
+
+    //Relacion uno a muchos
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 
      //Relacion uno a muchos inversa
 
