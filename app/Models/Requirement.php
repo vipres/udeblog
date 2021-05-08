@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Requeriment extends Model
+class Requirement extends Model
 {
     protected $guarded = ['id'];
-    
+
     use HasFactory;
 
     //Relacion uno a muchos inversa

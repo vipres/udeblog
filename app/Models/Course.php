@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $guarded = ['id', 'status'];
-    
+
     use HasFactory;
 
     const BORRADOR = 1;
@@ -21,9 +21,9 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function requeriments()
+    public function requirements()
     {
-        return $this->hasMany(Requeriment::class);
+        return $this->hasMany(Requirement::class);
     }
 
     public function goals()

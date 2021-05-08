@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequerimentsTable extends Migration
+class CreateRequirementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateRequerimentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requeriments', function (Blueprint $table) {
+        Schema::create('requirements', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
