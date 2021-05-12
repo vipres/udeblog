@@ -9,12 +9,34 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews', 'goals'];
+    protected $appends = ['nombre'];
+
+
 
     use HasFactory;
 
     const BORRADOR = 1;
     const REVISION = 2;
-    const PUBLICADO = 3;
+
+    public function getNombreAttribute()
+    {
+        $this->name = $this->title;
+        return $this->name;
+    }
+
+    public function getRatingAttribute()
+    {
+
+        if($this->reviews_count){
+            return round($this->reviews->avg('rating'), 1);
+        }else{
+            return 5;
+        }
+    }
+
+
+
     //Relacion uno a muchos
     public function reviews()
     {
