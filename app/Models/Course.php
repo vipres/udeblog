@@ -18,6 +18,7 @@ class Course extends Model
 
     const BORRADOR = 1;
     const REVISION = 2;
+    const PUBLICADO = 3;
 
     public function getNombreAttribute()
     {
@@ -33,6 +34,11 @@ class Course extends Model
         }else{
             return 5;
         }
+    }
+
+    public function getRouteKeyName()
+    {
+        return "slug";
     }
 
 
