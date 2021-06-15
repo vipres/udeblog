@@ -5,6 +5,12 @@
             'route' => route('home'),
             'active' => request()->routeIs('home') //devuelve true si la ruta es la pedida o false
         ],
+
+        [
+            'name' => 'Cursos',
+            'route' => route('courses.index'),
+            'active' => request()->routeIs('courses.index')
+        ]
     ];
 @endphp
 

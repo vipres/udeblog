@@ -1,4 +1,5 @@
 <x-app-layout>
+    {{-- Portada --}}
     <section class="bg-cover"  style="background-image: url({{asset('img/home/people.jpg')}})">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
             <div class="w-full md:w-3/4 lg:w-1/2">
@@ -97,7 +98,7 @@
                                 ({{$course->students_count}})
                             </p>
                         </div>
-                        <a href="{{route('course.show', $course)}}" class="block text-center w-full mt-4 bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
+                        <a href="{{route('courses.show', $course)}}" class="block text-center w-full mt-4 bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
                             Más información
                         </a>
                     </div>

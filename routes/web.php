@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,10 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('cursos', function (){
-    return 'Aqui se mostraran los cursos';
-})->name('courses.index');
+Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
 
 Route::get('curso/{course}', function($course){
     return 'Aqui se va a mostrar la información del curso';
-})->name('course.show');
+})->name('courses.show');
